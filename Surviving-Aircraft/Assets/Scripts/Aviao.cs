@@ -9,19 +9,28 @@ public class Aviao : MonoBehaviour {
     private Diretor diretor;
     private Vector3 posicaoInicial;
     private bool deveImpulsionar;
-    private Animator animacao;
-
-
+    // private Animator animacao;
+    private int qtdCollider;
+    // private ParticleSystem particula;
 
     private void Awake()
-    {
+    {  
+    
+        
         this.posicaoInicial = this.transform.position;
         this.fisica = this.GetComponent<Rigidbody2D>();
-        this.animacao = this.GetComponent<Animator>();
+        // this.animacao = this.GetComponent<Animator>();
+        //  ParticleSystem ps = GetComponent<ParticleSystem>();
+        // var coll = ps.collision;
+        // coll.enabled = true;
+        // coll.bounce = 0.5f;
     }
 
     private void Start()
     {
+        this.qtdCollider = 0;
+        // particula = GetComponent<ParticleSystem>();
+        // particula.Stop(true);
         this.diretor = GameObject.FindObjectOfType<Diretor>();
     }
 
@@ -30,7 +39,9 @@ public class Aviao : MonoBehaviour {
         {
             this.deveImpulsionar = true;
         }
-        this.animacao.SetFloat("VelocidadeY", this.fisica.velocity.y);
+        // if (this.fisica.velocity.y != null){
+        // // this.animacao.SetFloat("VelocidadeY", this.fisica.velocity.y);
+        // }
 	}
 
     private void FixedUpdate()
@@ -57,7 +68,14 @@ public class Aviao : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D colisao)
     {
-        this.fisica.simulated = false;
-        this.diretor.FinalizarJogo();
+        
+        if(this.qtdCollider<=1){
+            this.qtdCollider++;
+        }else{
+            this.fisica.simulated = false;
+            this.diretor.FinalizarJogo();
+            this.qtdCollider = 0;
+        }
+        
     }
 }
