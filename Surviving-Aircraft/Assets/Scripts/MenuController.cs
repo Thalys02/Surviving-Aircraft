@@ -9,5 +9,13 @@ public class MenuController : MonoBehaviour {
     {
         SceneManager.LoadScene("Jogo");
     }
+    public void Ranking()
+    {
+        SceneManager.LoadScene("Ranking");
+    }
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
 }
