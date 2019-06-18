@@ -17,6 +17,9 @@ public class InterfaceGameOver : MonoBehaviour {
     [SerializeField]
     private Sprite medalhaBronze;
 
+    
+
+
     private Pontuacao pontuacao;
     private int recorde;
 
@@ -29,11 +32,13 @@ public class InterfaceGameOver : MonoBehaviour {
     {
         this.AtualizarInterfaceGrafica();
         this.imagemGameOver.SetActive(true);
+
     }
 
     public void EsconderInterface()
     {
         this.imagemGameOver.SetActive(false);
+        
     }
 
     private void AtualizarInterfaceGrafica()
@@ -42,6 +47,7 @@ public class InterfaceGameOver : MonoBehaviour {
         this.valorRecorde.text = recorde.ToString();
 
         this.VerificarCorMeldalha();
+        
     }
 
     private void VerificarCorMeldalha()
@@ -60,5 +66,6 @@ public class InterfaceGameOver : MonoBehaviour {
             //medalha de bronze
             this.posicaoMedalha.sprite = this.medalhaBronze;
         }
+       
     }
 }
